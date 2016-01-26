@@ -9,8 +9,6 @@ class Webxtractor
     result
   end
 
-  private
-
   def self.get_tag(tag_name=:title, body)
     result = normalize(body)
     result = result.match(/<\s?#{tag_name}.*>(.*)<\/\s?#{tag_name}.*>/).to_a
