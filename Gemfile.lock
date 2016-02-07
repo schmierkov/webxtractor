@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     webxtractor (0.0.2)
-      nokogiri (>= 1.6.7.2)
+      nokogiri (~> 1.6, >= 1.6.7.2)
 
 GEM
   remote: https://rubygems.org/
@@ -40,7 +40,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  pry-byebug (>= 3.3.0)
+  pry-byebug (~> 3.3, >= 3.3.0)
   rspec
   webxtractor!
 
