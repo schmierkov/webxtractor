@@ -9,6 +9,6 @@ Gem::Specification.new do |s|
   s.email                    = "github@schmierkov.de"
   s.files                    = ["lib/webxtractor.rb"]
   s.homepage                 = "https://github.com/schmierkov/webxtractor"
-  s.add_runtime_dependency     "nokogiri", "~> 1.6.7.2"
-  s.add_development_dependency "pry-byebug", "~> 3.3.0"
+  s.add_runtime_dependency     "nokogiri", ">= 1.6.7.2"
+  s.add_development_dependency "pry-byebug", ">= 3.3.0"
 end
