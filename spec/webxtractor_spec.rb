@@ -2,6 +2,31 @@ require 'spec_helper'
 
 describe Webxtractor, "basic functionality" do
 
+  context ".get" do
+    let(:result) { Webxtractor.get(url) }
+    let(:uri_double) { double :uri }
+
+    context "valid url" do
+      let(:url) { 'http://www.example.com' }
+
+      it "calls .parse with website body" do
+        expect(URI).to receive(:parse).and_return(uri_double)
+        expect(uri_double).to receive(:read).and_return("<html><title>hello world</title></html>")
+        expect(Webxtractor).to receive(:parse).and_call_original
+
+        expect(result.title).to eq("hello world")
+      end
+    end
+
+    context "url is nil" do
+      let(:url) { nil }
+
+      it "calls .parse with website body" do
+        expect(result).to eq(nil)
+      end
+    end
+  end
+
   context ".parse" do
     let(:result) { Webxtractor.parse(body) }
 
@@ -32,9 +57,8 @@ describe Webxtractor, "basic functionality" do
     context 'title tag outside html' do
       let(:body) { "<html></html><title>hello bar</title>" }
 
-      it "should not find result" do
-        pending
-        expect(result.title).to be_nil
+      it "should find result" do
+        expect(result.title).to eq("hello bar")
       end
     end
 
@@ -42,9 +66,8 @@ describe Webxtractor, "basic functionality" do
       let(:body) { "<html><title>hello foo</title>"\
                    "<title>hello bar</title></html>" }
 
-      it "gets first title" do
-        pending
-        expect(result.title).to eq("hello foo")
+      it "returns array with the two tag contents" do
+        expect(result.title).to eq(["hello foo", "hello bar"])
       end
     end
   end
