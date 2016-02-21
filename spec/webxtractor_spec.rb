@@ -70,6 +70,22 @@ describe Webxtractor, "basic functionality" do
         expect(result.title).to eq(["hello foo", "hello bar"])
       end
     end
+
+    context 'meta description' do
+      let(:body) { "<meta name='description' content='HelloWorld'>" }
+
+      it "returns array with the two tag contents" do
+        expect(result.meta_description).to eq("HelloWorld")
+      end
+    end
+
+    context 'meta description' do
+      let(:body) { "<meta name='keywords' content='keyzauberwort'/>" }
+
+      it "returns array with the two tag contents" do
+        expect(result.meta_keywords).to eq("keyzauberwort")
+      end
+    end
   end
 
   context ".normalize" do
