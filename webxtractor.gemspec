@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                     = "webxtractor"
-  s.version                  = "0.0.4"
+  s.version                  = "0.0.5"
   s.license                  = "MIT"
   s.date                     = "2016-01-24"
   s.summary                  = "Extracts meta informations from a HTML Page"
